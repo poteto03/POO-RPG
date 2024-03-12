@@ -41,10 +41,11 @@ void Player::gainExperience(int exp) {
 }
 
 Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
-    int selectedTarget = 0;
-    cout << "Select a target: " << endl;
+    //va a recibir un vector de enemigos que son posibles blancos de ataque
+    int selectedTarget = 0;//inicia en cero
+    cout << "Select a target: " << endl;//se elije un enemigo
     for (int i = 0; i < possibleTargets.size(); i++) {
-        cout << i << ". " << possibleTargets[i]->getName() << endl;
+        cout << i << ". " << possibleTargets[i]->getName() << endl;//obtenemos el nombre
     }
 
     //TODO: Add input validation
@@ -52,24 +53,24 @@ Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
     return possibleTargets[selectedTarget];
 }
 
-Action Player::takeAction(vector<Enemy*> enemies) {
-    int action = 0;
+Action Player::takeAction(vector<Enemy*> enemies) {//funcion para elegir que accion realizar
+    int action = 0;//inicia la variable en 0
     cout << "Select an action: " << endl
     << "1. Attack" << endl;
 
     //TODO: Validate input
     cin >> action;
-    Action currentAction;
+    Action currentAction;//crear un objeto de accion, para eso se creo el constructo vacio
     Character* target = nullptr;
 
     switch(action) {
         case 1:
-            target = selectTarget(enemies);
-            currentAction.target = target;
-            currentAction.action = [this, target](){
+            target = selectTarget(enemies);//mandamos a llamra la funcion que selecciona a quien atacar
+            currentAction.target = target;//se le asigna el mismo valor de target
+            currentAction.action = [this, target](){//es un puntero a una funcion, le estoy diciendo que la guarde en action
                 doAttack(target);
             };
-            currentAction.speed = getSpeed();
+            currentAction.speed = getSpeed();//se le asigna velocidad del personaje actual
             break;
         default:
             cout << "Invalid action" << endl;

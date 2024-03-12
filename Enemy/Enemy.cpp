@@ -34,24 +34,24 @@ int Enemy::getExperience() {
 
 Character* Enemy::selectTarget(vector<Player*> possibleTargets) {
     //target with less health
-    int lessHealth = 9999999;
+    int lessHealth = 9999999;//todos los personaje van a tener menos de esta vida
     Character* target = nullptr;
-    for(auto character : possibleTargets) {
+    for(auto character : possibleTargets) {//iteramostodo el vector de posibles objetos
         if(character->getHealth() < lessHealth) {
-            lessHealth = character->getHealth();
-            target = character;
+            lessHealth = character->getHealth();//actualizamos la vida mas baja que hay
+            target = character;//y hacemos que el puntero apunte al personaje con la vida mas baja
         }
     }
-    return target;
+    return target;//y retonamos al caracter con menos vida
 }
 
-Action Enemy::takeAction(vector<Player*> partyMembers) {
+Action Enemy::takeAction(vector<Player*> partyMembers) {//recibe la lista de jugadores para decidir a quien atacar
     Action currentAction;
-    currentAction.speed = getSpeed();
+    currentAction.speed = getSpeed();//asignamos velocidad
 
-    Character* target = selectTarget(partyMembers);
+    Character* target = selectTarget(partyMembers);//llamamos la funcion selectTarget que es para atacar a quien tiene menos vida
     currentAction.target = target;
-    currentAction.action = [this, target](){
+    currentAction.action = [this, target](){//hacemos lo mismo que en player le pasamos el this el target para que pueda atacar
         doAttack(target);
     };
 

@@ -21,9 +21,10 @@ public:
     Character* subscriber = nullptr;
 
     //Puntero a una función que no recibe parametros y no devuelve nada
-    function<void(void)> action = nullptr;
+    function<void(void)> action = nullptr;//es una funcion que va a ser ejecutada en algun momento
+    //y la estamos guardando en una variable
     Action(int _speed, function<void(void)> _action, Character* _subscriber, Character* _target);
-    Action();
+    Action();//se deja vacio para poder hacer mas declaraciones, linea 63 player.cpp
 
     bool operator<(const Action& other) const;
 };

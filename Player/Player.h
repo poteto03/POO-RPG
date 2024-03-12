@@ -1,7 +1,7 @@
 //
 // Created by Victor Navarro on 15/02/24.
 //
-#pragma once
+#pragma once//para resolver la dependencia ciclica
 #ifndef RPG_PLAYER_H
 #define RPG_PLAYER_H
 #include "../Character/Character.h"
@@ -23,8 +23,8 @@ public:
     Player(string _name, int _health, int _attack, int _defense, int _speed);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
-    Character* selectTarget(vector<Enemy*> possibleTargets);
-    Action takeAction(vector<Enemy*> enemies);
+    Character* selectTarget(vector<Enemy*> possibleTargets);//para seleccionar un blaco de la lista de enemigos
+    Action takeAction(vector<Enemy*> enemies);//funcion que retorna una actccion, se llama takeAction y recive un vector de enemigos
 
     void gainExperience(int exp);
 

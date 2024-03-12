@@ -15,7 +15,7 @@ protected:
     int attack;
     int defense;
     int speed;
-    bool isPlayer;
+    bool isPlayer;//para definir si el participante es jugador o enemigo
 public:
     Character(string _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer);
 
@@ -26,15 +26,13 @@ public:
     //Incrementar la defensa un 20% solo por el turno actual
     void defend();
 
-    bool flee(Character* target);
+    bool flee(Character* target);//para que el participante escape. Recibe al enemigo del que se quiere escapar
     string getName();
     int getHealth();
     int getAttack();
     int getDefense();
-    bool getIsPlayer();
+    bool getIsPlayer();//para definir si el participante es jugador o enemigo
     int getSpeed();
     string toString();
 };
-
-
 #endif //RPG_CHARACTER_H
