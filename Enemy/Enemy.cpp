@@ -23,7 +23,7 @@ void Enemy::takeDamage(int damage) {
     health-= trueDamage;
 
     cout << name << " took " << trueDamage << " damage!" << endl;
-    cout <<"remainig health" + to_string(this->getHealth())<<endl;
+    cout <<"remainig health " + to_string(this->getHealth())<<endl;
     if(health <= 0) {
         cout << name << " has been defeated!" << endl;
     }
@@ -58,7 +58,7 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {//recibe la lista de jug
     //cout<<"\nreference health is " + to_string(referenceHealth);
     //cout<<"\nget health" + to_string(this->getHealth());
     if(this->getHealth()<referenceHealth){//si la salud actual es de menos del 15%
-        int EnemyDefenseProp =rand() % 100 +40;//aqui establesco la probabilidad de que el villano se defienda, genero un numero del 1 al 100
+        int EnemyDefenseProp =rand() % 100 +1;//aqui establesco la probabilidad de que el villano se defienda, genero un numero del 1 al 100
         cout<<"\nEnemyDefenseProp is " + to_string(EnemyDefenseProp);
         //int EnemyDefenseProp = 30;//aqui establesco la probabilidad de que el villano se defienda, genero un numero del 1 al 100
 
@@ -70,6 +70,13 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {//recibe la lista de jug
                 cout << "Defense is being implemented"<<endl;
             };
         }
+        else{
+            currentAction.target = target;
+            currentAction.action = [this, target](){//hacemos lo mismo que en player le pasamos el this el target para que pueda atacar
+                doAttack(target);
+            };
+        }
+
     }
     else{
         currentAction.target = target;

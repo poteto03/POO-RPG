@@ -24,7 +24,7 @@ void Player::takeDamage(int damage) {
     health -= trueDamage;
 
     cout << name << " took " << trueDamage << " damage!" << endl;
-    cout <<"remainig health" + to_string(this->getHealth())<<endl;
+    cout <<"remainig health " + to_string(this->getHealth())<<endl;
 
     if (health <= 0) {
         cout << name << " has been defeated!" << endl;
